@@ -13,13 +13,13 @@ public class Employee {
 	private String designation;
 	private Address address;
 	private long[] phoneNumbers;
-	private Map<String, String> personInformation;
+	private Map<String, String> personalInformation;
 
 	public Employee() {
 	}
 
 	public Employee(int id, String name, int age, BigDecimal salary, String designation, Address address,
-			long[] phoneNumbers, Map<String, String> personInformation) {
+			long[] phoneNumbers, Map<String, String> personalInformation) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,7 +28,7 @@ public class Employee {
 		this.designation = designation;
 		this.address = address;
 		this.phoneNumbers = phoneNumbers;
-		this.personInformation = personInformation;
+		this.personalInformation = personalInformation;
 	}
 
 	public int getId() {
@@ -87,12 +87,12 @@ public class Employee {
 		this.phoneNumbers = phoneNumbers;
 	}
 
-	public Map<String, String> getPersonInformation() {
-		return personInformation;
+	public Map<String, String> getPersonalInformation() {
+		return personalInformation;
 	}
 
-	public void setPersonInformation(Map<String, String> personInformation) {
-		this.personInformation = personInformation;
+	public void setPersonalInformation(Map<String, String> personalInformation) {
+		this.personalInformation = personalInformation;
 	}
 
 	@Override
@@ -106,7 +106,7 @@ public class Employee {
 		sb.append("Description: " + getDesignation() + "\n");
 		sb.append("Phone Numbers: "+ Arrays.toString(getPhoneNumbers())+ "\n");
 		sb.append("Address: "+ getAddress() + "\n");
-		sb.append("Personal Information: "+ getPersonInformation() + "\n");
+		sb.append("Personal Information: "+ getPersonalInformation() + "\n");
 		sb.append("***********************************************");
 		
 		return sb.toString();
