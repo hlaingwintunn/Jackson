@@ -10,11 +10,13 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.hlaing.jackson.entity.Employee;
 
 public class ObjectMappingDemo {
@@ -80,6 +82,22 @@ public class ObjectMappingDemo {
 		}
 		
 		return elements;
+	}
+	
+	public void writeEmployeeToJson(Employee emp) {
+		final ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			String jsonInString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(emp);
+			logger.info("Employee JSON is \n"+ jsonInString);
+			objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+			objectMapper.writeValue(new File(emp.getId()+ "_employee.json"), emp);
+		}catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 
 }
